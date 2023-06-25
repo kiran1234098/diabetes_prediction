@@ -1,0 +1,10 @@
+seaborn 
+pandas
+numpy
+matplotlib
+scipy
+scikit-learn
+openpyxl
+flask
+
+-e .
