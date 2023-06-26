@@ -28,7 +28,7 @@ class ModelTrainer:
         self.model_trainer_config = ModelTrainerConfig()
 
     def initiate_model_training(self,train_array,test_array):
-        """Trains model for Heating Load and saves best model in .pkl file format"""
+        """Trains model and saves best model in .pkl file format"""
         try:
             # print(train_array)
             logging.info('Splitting Dependent and Independent variables from train and test data')
@@ -41,11 +41,11 @@ class ModelTrainer:
 
             models={
             
-            'LogisticRegression':LogisticRegression()
-            'naive':GaussianNB()
-            'DecisionTree': DecisionTreeClassifier()
-            'RandomForest':RandomForestClassifier()
-            'xgboost':xgb.XGBClassifier()
+            'LogisticRegression':LogisticRegression(),
+            'naive':GaussianNB(),
+            'DecisionTree': DecisionTreeClassifier(),
+            'RandomForest':RandomForestClassifier(),
+            'xgboost':xgb.XGBClassifier(),
             'svm':SVC()
         }
             

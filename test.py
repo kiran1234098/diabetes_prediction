@@ -10,21 +10,22 @@ import pandas as pd
 import numpy as np
 
 class DataLoader:
-    def _init_(self, path: str):
+    def __init__(self, path: str):
         self.path = path
     
     def load_data(self) -> Tuple[np.ndarray, np.ndarray]:
-        data = pd.read_excel(self.path)
+        data = pd.read_csv(self.path)
         X = data.iloc[:, :8].values
         y = data.iloc[:, 8].values
         return X, y
 
 class ModelTrainer:
-    def _init_(self, model):
+    def __init__(self, model):
         self.model = model
     
     def train(self, X_train: np.ndarray, y_train: np.ndarray):
         self.model.fit(X_train, y_train)
+        
     
     def evaluate(self, X_test: np.ndarray, y_test: np.ndarray) -> Tuple[float, float]:
         y_pred = self.model.predict(X_test)
@@ -34,7 +35,7 @@ class ModelTrainer:
 
 
 class ModelComparer:
-    def _init_(self, model1, model2,model3,model4,model5,model6):
+    def __init__(self, model1, model2,model3,model4,model5,model6):
         self.model1 = model1
         self.model2 = model2
         self.model3 = model3
@@ -69,7 +70,7 @@ class ModelComparer:
         print(f"Model 5: accuracy = {accuracy5}")
         print(f"Model 6: accuracy = {accuracy6}")
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     data_loader = DataLoader("notebooks/diabetes.csv")
     X, y = data_loader.load_data()
     X_train, X_test = X[:600], X[600:]
@@ -81,5 +82,5 @@ if _name_ == "_main_":
     model5 =xgb.XGBClassifier()
     model6 =SVC()
 
-    comparer = ModelComparer(model1, model2,model3,model4,model5,model6)
+    comparer = ModelComparer(model1,model2,model3,model4,model5,model6)
     comparer.compare(X_train, y_train, X_test, y_test)

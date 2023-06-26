@@ -28,11 +28,16 @@ def hello_world():
         predict_pipeline=PredictPipeline()
         model_path = os.path.join('artifacts', 'model.pkl')
        
-        my_load =predict_pipeline.predict(features=final_new_data, model_path=model_path)
+        result =predict_pipeline.predict(features=final_new_data, model_path=model_path)
         
-        # results=round(pred[0],2)
+        if (result==0):
+              results="Person is not diabetic"
+              print("Person is not diabetic")
+        else:
+               results ="Person is diabetic"
+               print("Person is diabetic")
 
-        return render_template('results.html' ,load=my_load)   
+        return render_template('result.html' ,results=results)   
 
 
 

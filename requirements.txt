@@ -6,5 +6,8 @@ scipy
 scikit-learn
 openpyxl
 flask
+xgboost
+
+
 
 -e .
